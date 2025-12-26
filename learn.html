@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Nepali | Nepalify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Mukta:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-ambient">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <nav class="navbar fade-in">
+            <a href="index.html" class="nav-brand">Nepalify</a>
+            <div class="nav-links">
+                <a href="translate.html">Translate</a>
+                <a href="unicode.html">Unicode</a>
+                <a href="learn.html" class="active">Learn</a>
+                <a href="grammar.html">Grammar</a>
+                <a href="divyopadesh.html">Divyopadesh</a>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="content-page fade-in-delay-1">
+            <h1>Essential Phrases</h1>
+            <p class="subtitle">Start speaking Nepali today.</p>
+
+            <div class="phrase-grid" id="phraseGrid">
+                <!-- Content will be dynamically populated by script.js -->
+            </div>
+        </main>
+
+        <footer class="fade-in-delay-2">
+            <p>&copy; 2025 Nepalify</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

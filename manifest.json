@@ -1,0 +1,16 @@
+{
+    "name": "Nepalify - Learn & Translate",
+    "short_name": "Nepalify",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#0f172a",
+    "description": "Your gateway to the Nepali Language. Learn, translate, and explore grammar.",
+    "icons": [
+        {
+            "src": "assets/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
