@@ -7,9 +7,16 @@ const https = require('https');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+require('dotenv').config(); // Load environment variables
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+
 // Optimization: Keep-Alive Agent to reuse SSL connections to Google
 const httpsAgent = new https.Agent({ keepAlive: true });
 const apiClient = axios.create({ httpsAgent });
+
+// Initialize Gemini (if key exists)
+const genAI = process.env.GEMINI_API_KEY ? new GoogleGenerativeAI(process.env.GEMINI_API_KEY) : null;
+const model = genAI ? genAI.getGenerativeModel({ model: "gemini-1.5-flash" }) : null;
 
 // Enable CORS for all origins (modify for production security if needed)
 app.use(cors());
@@ -46,15 +53,58 @@ app.post('/api/transliterate', async (req, res) => {
     }
 });
 
-// Unicode Transliteration Proxy Endpoint (Input Tools)
+// Unicode Transliteration Proxy Endpoint (Input Tools & AI)
 app.post('/api/unicode', async (req, res) => {
-    const { text } = req.body;
+    let { text, mode } = req.body;
 
     if (!text) {
         return res.json({ result: '' });
     }
 
+    // AI Smart Mode
+    if (mode === 'ai' && model) {
+        try {
+            const prompt = `Convert this Romanized Nepali text to Nepali script. Use formal grammar but understand "social media" spellings (e.g., 'xa' -> 'छ', 'xha' -> 'छ', 'ma' -> 'म'). Output ONLY the converted Nepali text. Input: "${text}"`;
+
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const textResponse = response.text().trim();
+
+            return res.json({ result: textResponse });
+        } catch (error) {
+            console.error('Gemini AI Error:', error.message);
+            // Fallback to standard mode if AI fails
+        }
+    }
+
+    // Standard Mode (Google Input Tools) with Custom Pre-processing
     try {
+        // Smart Pre-processing for Custom Dialect/Spellings
+        // User requested: xa, chha, cha, xha -> छ
+        // Google Input Tools maps 'chha' -> 'छ' reliably.
+        // We will normalize the others to 'chha' before sending.
+
+        // Regex to replace specific patterns (case-insensitive)
+        // We use lookaheads/lookbehinds or word boundaries if strictly needed, 
+        // but for broader "generalization", replacing the sequence is often desired.
+        // However, to avoid replacing 'character' -> 'chharacter', we might want to be careful.
+        // Given the examples are short syllables, we'll target them as loose matches for now 
+        // or prioritize the specific user examples.
+
+        // Strategy: Replace 'xa', 'xha' with 'chha'. 
+        // 'cha' mapping to 'chha' is aggressive (usually 'cha' -> 'च'), 
+        // but sticking to user request: "cha -> छ".
+
+        const replacements = [
+            { pattern: /xha/gi, replacement: 'chha' },
+            { pattern: /xa/gi, replacement: 'chha' },
+            { pattern: /cha/gi, replacement: 'chha' } // User explicitly asked for this mapping to 'छ'
+        ];
+
+        replacements.forEach(({ pattern, replacement }) => {
+            text = text.replace(pattern, replacement);
+        });
+
         const inputToolsUrl = `https://inputtools.google.com/request?text=${encodeURIComponent(text)}&itc=ne-t-i0-und&num=1&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`;
 
         const response = await apiClient.get(inputToolsUrl);

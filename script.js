@@ -82,20 +82,31 @@ if (romanInput && nepaliOutput) {
 // Unicode Converter Logic (for unicode.html)
 const unicodeInput = document.getElementById('unicodeInput');
 const unicodeOutput = document.getElementById('unicodeOutput');
+const aiModeToggle = document.getElementById('aiModeToggle');
 
 if (unicodeInput && unicodeOutput) {
     const handleUnicodeInput = debounce(async (e) => {
         const text = e.target.value;
+        const isAiMode = aiModeToggle ? aiModeToggle.checked : false;
+
         if (!text.trim()) {
             unicodeOutput.value = '';
             return;
+        }
+
+        // Feedback
+        if (isAiMode) {
+            unicodeOutput.placeholder = "AI is thinking...";
         }
 
         try {
             const response = await fetch('/api/unicode', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text })
+                body: JSON.stringify({
+                    text,
+                    mode: isAiMode ? 'ai' : 'standard'
+                })
             });
             const data = await response.json();
             if (data.result) {
@@ -104,8 +115,12 @@ if (unicodeInput && unicodeOutput) {
         } catch (error) {
             console.error('Unicode Error:', error);
             unicodeOutput.value = 'Error converting text';
+        } finally {
+            if (isAiMode) {
+                unicodeOutput.placeholder = "Converted text will appear here...";
+            }
         }
-    }, 20); // Slightly higher debounce for typing flow
+    }, 500); // Fixed 500ms debounce for both modes
 
     unicodeInput.addEventListener('input', handleUnicodeInput);
 }
