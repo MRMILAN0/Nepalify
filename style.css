@@ -1170,24 +1170,121 @@ textarea::placeholder {
     letter-spacing: 0.1em;
 }
 
-.teachings-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    padding-bottom: 4rem;
+/* --- Teaching Cards (Divyopadesh) --- */
+.teaching-card {
+    background: var(--surface-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Responsive Grid for Smaller Screens */
-@media (max-width: 1024px) {
-    .teachings-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.teaching-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent-glow);
 }
 
-@media (max-width: 640px) {
-    .teachings-grid {
-        grid-template-columns: 1fr;
-    }
+.teaching-quote-nepali {
+    font-family: var(--font-nepali);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    border-left: 4px solid #B8860B;
+    /* Royal Gold */
+    padding-left: 1rem;
+}
+
+.teaching-quote-english {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.teaching-context {
+    margin-top: auto;
+    background: rgba(184, 134, 11, 0.08);
+    /* Gold Tint */
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #854d0e;
+    /* Darker Gold/Brown */
+    border: 1px solid rgba(184, 134, 11, 0.15);
+}
+
+.teaching-context strong {
+    color: #713f12;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* Category Specific Highlights (Optional, subtle borders) */
+.teaching-card[data-category="military"]:hover {
+    border-color: rgba(220, 38, 38, 0.3);
+}
+
+/* Red */
+.teaching-card[data-category="economy"]:hover {
+    border-color: rgba(22, 163, 74, 0.3);
+}
+
+/* Green */
+.teaching-card[data-category="diplomacy"]:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Blue */
+.teaching-card[data-category="unity"]:hover {
+    border-color: rgba(219, 39, 119, 0.3);
+}
+
+/* Pink */
+.teaching-card[data-category="governance"]:hover {
+    border-color: rgba(234, 179, 8, 0.3);
+}
+
+/* Yellow */
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .teaching-card {
+    background: var(--surface-white);
+    /* Keep consistent slate-800 */
+}
+
+[data-theme="dark"] .teaching-card:hover {
+    background: rgba(30, 41, 59, 0.9);
+}
+
+[data-theme="dark"] .teaching-context {
+    background: rgba(234, 179, 8, 0.1);
+    color: #fef08a;
+    /* Light yellow text */
+    border-color: rgba(253, 224, 71, 0.1);
+}
+
+[data-theme="dark"] .teaching-context strong {
+    color: #fca5a5;
+    /* Light Red/Gold */
+}
+
+[data-theme="dark"] .filter-btn.active {
+    background: #f8fafc;
+    color: #0f172a;
 }
 
 /* --- Mobile/Responsive Enhancements --- */

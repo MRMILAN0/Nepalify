@@ -334,4 +334,6 @@ function renderPhrases() {
 }
 
 // Initialize on load
+
+// Initialize on load
 renderPhrases();
