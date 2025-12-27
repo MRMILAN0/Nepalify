@@ -225,14 +225,45 @@ body {
     text-decoration: none;
     color: var(--text-secondary);
     font-weight: 700;
-    font-size: 1.4rem;
-    /* Larger */
-    transition: color 0.2s;
+    font-size: 1.1rem;
+    /* Adjusted for better fit */
+    transition: color 0.3s var(--ease-out);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s var(--ease-out);
+    border-radius: 2px;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--text-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-brand {
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: transform 0.3s var(--ease-out);
+}
+
+.nav-brand:hover {
+    transform: scale(1.05);
 }
 
 /* --- Theme Toggle --- */
@@ -1159,140 +1190,100 @@ textarea::placeholder {
     }
 }
 
-.teaching-card {
-    background: var(--surface-white);
-    padding: 2.5rem;
-    border-radius: 24px;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    /* Dark Goldenrod border */
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.teaching-card::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    right: 20px;
-    font-size: 8rem;
-    color: rgba(184, 134, 11, 0.1);
-    font-family: serif;
-    pointer-events: none;
-}
-
-.teaching-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px -10px rgba(184, 134, 11, 0.15);
-    border-color: #B8860B;
-}
-
-.teaching-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(184, 134, 11, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #B8860B;
-    margin-bottom: 1.5rem;
-}
-
-.teaching-quote-nepali {
-    font-family: var(--font-nepali);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-.teaching-quote-english {
-    font-style: italic;
-    color: #B8860B;
-    /* Golden text for emphasis */
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    display: block;
-    font-size: 1.1rem;
-}
-
-.teaching-context {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    border-top: 1px solid var(--border-light);
-    padding-top: 1rem;
-}
-
-/* Dark Mode Overrides for History */
-[data-theme="dark"] .teaching-card {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(184, 134, 11, 0.3);
-}
-
-[data-theme="dark"] .teaching-card:hover {
-    box-shadow: 0 15px 40px -10px rgba(184, 134, 11, 0.1);
-    background: rgba(30, 41, 59, 0.8);
-}
-
-/* --- Footer & Animation --- */
-footer {
-    opacity: 0.5;
-    font-size: 0.9rem;
-    margin-top: auto;
-}
-
-.fade-in {
-    animation: fadeIn 0.8s var(--ease-out) forwards;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.fade-in-delay-1 {
-    animation-delay: 0.1s;
-}
-
-.fade-in-delay-2 {
-    animation-delay: 0.2s;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Mobile --- */
-@media (max-width: 640px) {
+/* --- Mobile/Responsive Enhancements --- */
+@media (max-width: 768px) {
     .app-container {
         padding: 1rem;
         gap: 2rem;
     }
 
     .navbar {
+        padding: 1.5rem;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .nav-links {
-        gap: 1rem;
+        gap: 1.2rem;
         flex-wrap: wrap;
         justify-content: center;
     }
 
+    .nav-links a {
+        font-size: 1rem;
+    }
+
+    /* Translate Page Mobile */
+    .input-block,
+    .output-block {
+        padding: 1.5rem;
+    }
+
+    textarea {
+        font-size: 1.2rem;
+    }
+
+    /* Home Page Mobile */
+    .logo-icon-large {
+        width: 5rem;
+        height: 5rem;
+        font-size: 2.5rem;
+        border-radius: 16px;
+    }
+
+    .home-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    /* Royal/History Page Mobile */
+    .royal-title {
+        font-size: 2.2rem;
+    }
+
+    .royal-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .royal-bio {
+        font-size: 1rem;
+        padding: 1.5rem;
+    }
+
+    .teachings-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Learn Page Mobile */
     .alphabet-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.8rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .phrase-grid {
+        grid-template-columns: 1fr;
     }
 
     .l-nepali {
         font-size: 2rem;
     }
+}
 
-    textarea {
-        font-size: 1.3rem;
+@media (max-width: 480px) {
+    .alphabet-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
     }
 }

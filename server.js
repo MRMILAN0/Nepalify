@@ -46,6 +46,32 @@ app.post('/api/transliterate', async (req, res) => {
     }
 });
 
+// Unicode Transliteration Proxy Endpoint (Input Tools)
+app.post('/api/unicode', async (req, res) => {
+    const { text } = req.body;
+
+    if (!text) {
+        return res.json({ result: '' });
+    }
+
+    try {
+        const inputToolsUrl = `https://inputtools.google.com/request?text=${encodeURIComponent(text)}&itc=ne-t-i0-und&num=1&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`;
+
+        const response = await apiClient.get(inputToolsUrl);
+
+        // Response format: ["SUCCESS", [["namaste", ["नमस्ते", "नमस्ते!", ...], ...]]]
+        if (response.data && response.data[1] && response.data[1][0] && response.data[1][0][1]) {
+            const result = response.data[1][0][1][0]; // First suggestion
+            return res.json({ result });
+        } else {
+            return res.status(500).json({ error: 'Failed to fetch from Google Input Tools' });
+        }
+    } catch (error) {
+        console.error('Unicode Proxy Error:', error.message);
+        return res.status(500).json({ error: 'Server Error', details: error.message });
+    }
+});
+
 // TTS Proxy Endpoint
 app.get('/api/tts', async (req, res) => {
     const { text } = req.query;

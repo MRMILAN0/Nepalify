@@ -79,10 +79,42 @@ if (romanInput && nepaliOutput) {
     romanInput.addEventListener('input', handleInput);
 }
 
+// Unicode Converter Logic (for unicode.html)
+const unicodeInput = document.getElementById('unicodeInput');
+const unicodeOutput = document.getElementById('unicodeOutput');
+
+if (unicodeInput && unicodeOutput) {
+    const handleUnicodeInput = debounce(async (e) => {
+        const text = e.target.value;
+        if (!text.trim()) {
+            unicodeOutput.value = '';
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/unicode', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+            const data = await response.json();
+            if (data.result) {
+                unicodeOutput.value = data.result;
+            }
+        } catch (error) {
+            console.error('Unicode Error:', error);
+            unicodeOutput.value = 'Error converting text';
+        }
+    }, 20); // Slightly higher debounce for typing flow
+
+    unicodeInput.addEventListener('input', handleUnicodeInput);
+}
+
 // Optional: toggle for Training UI is removed as we depend on Google now.
 // If you want to keep manual overrides, we'd need to blend logic,
 // but for "Google Backend" request, we rely purely on the API.
 
+// --- Dark Mode & Mobile Menu Logic ---
 // --- Dark Mode Logic ---
 const themeToggleBtn = document.getElementById('themeToggle');
 const rootElement = document.documentElement;
