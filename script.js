@@ -82,44 +82,46 @@ if (romanInput && nepaliOutput) {
 // Unicode Converter Logic (for unicode.html)
 const unicodeInput = document.getElementById('unicodeInput');
 const unicodeOutput = document.getElementById('unicodeOutput');
-const handleUnicodeInput = debounce(async (e) => {
-    const text = e.target.value;
-    const aiBadge = document.querySelector('.badge-container');
 
-    if (!text.trim()) {
-        unicodeOutput.value = '';
-        return;
-    }
+if (unicodeInput && unicodeOutput) {
+    const handleUnicodeInput = debounce(async (e) => {
+        const text = e.target.value;
+        const aiBadge = document.querySelector('.badge-container');
 
-    // Feedback
-    unicodeOutput.placeholder = "AI is thinking...";
-    if (aiBadge) aiBadge.style.opacity = '0.5';
-
-    try {
-        const response = await fetch('/api/unicode', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text })
-        });
-
-        const data = await response.json();
-
-        if (data.result) {
-            unicodeOutput.value = data.result;
-        } else if (data.error) {
-            console.error(data.error);
-            unicodeOutput.value = "AI Service Unavailable (Check Server Logs)";
+        if (!text.trim()) {
+            unicodeOutput.value = '';
+            return;
         }
-    } catch (error) {
-        console.error('Unicode Error:', error);
-        unicodeOutput.value = 'Network Error';
-    } finally {
-        unicodeOutput.placeholder = "Converted text will appear here...";
-        if (aiBadge) aiBadge.style.opacity = '1';
-    }
-}, 600); // 600ms debounce for AI rate limiting
 
-unicodeInput.addEventListener('input', handleUnicodeInput);
+        // Feedback
+        unicodeOutput.placeholder = "AI is thinking...";
+        if (aiBadge) aiBadge.style.opacity = '0.5';
+
+        try {
+            const response = await fetch('/api/unicode', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+
+            const data = await response.json();
+
+            if (data.result) {
+                unicodeOutput.value = data.result;
+            } else if (data.error) {
+                console.error(data.error);
+                unicodeOutput.value = "AI Service Unavailable (Check Server Logs)";
+            }
+        } catch (error) {
+            console.error('Unicode Error:', error);
+            unicodeOutput.value = 'Network Error';
+        } finally {
+            unicodeOutput.placeholder = "Converted text will appear here...";
+            if (aiBadge) aiBadge.style.opacity = '1';
+        }
+    }, 600); // 600ms debounce for AI rate limiting
+
+    unicodeInput.addEventListener('input', handleUnicodeInput);
 }
 
 // Optional: toggle for Training UI is removed as we depend on Google now.
