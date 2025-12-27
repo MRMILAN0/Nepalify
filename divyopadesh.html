@@ -61,11 +61,22 @@
             </div>
         </header>
 
+        <!-- Filter Tabs -->
+        <div class="filter-container fade-in-delay-1">
+            <button class="filter-btn active" data-filter="all">All Teachings</button>
+            <button class="filter-btn" data-filter="governance">Governance</button>
+            <button class="filter-btn" data-filter="military">Military</button>
+            <button class="filter-btn" data-filter="economy">Economy</button>
+            <button class="filter-btn" data-filter="diplomacy">Diplomacy</button>
+            <button class="filter-btn" data-filter="unity">Unity & Culture</button>
+        </div>
+
         <!-- Main Content -->
         <main class="teachings-grid fade-in-delay-2" style="padding-bottom: 4rem;">
 
-            <!-- 1. The Yam -->
-            <article class="teaching-card">
+            <!-- 1. The Yam (Diplomacy) -->
+            <article class="teaching-card" data-category="diplomacy">
+                <div class="card-icon">🥔</div>
                 <div class="teaching-quote-nepali">"नेपाल दुई ढुङ्गाको तरुल हो।"</div>
                 <span class="teaching-quote-english">"Nepal is a yam between two huge boulders."</span>
                 <div class="teaching-context">
@@ -73,8 +84,9 @@
                 </div>
             </article>
 
-            <!-- 2. The Garden -->
-            <article class="teaching-card">
+            <!-- 2. The Garden (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🌸</div>
                 <div class="teaching-quote-nepali">"यो चार जात छात्तिश वर्णको साझा फूलबारी हो।"</div>
                 <span class="teaching-quote-english">"This is a common garden of 4 castes and 36 sub-castes."</span>
                 <div class="teaching-context">
@@ -82,45 +94,50 @@
                 </div>
             </article>
 
-            <!-- 3. Corruption -->
-            <article class="teaching-card">
+            <!-- 3. Corruption (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">🚫</div>
                 <div class="teaching-quote-nepali">"घूस लिन्या र दिन्या दुवै राष्ट्रका शत्रु हुन्।"</div>
                 <span class="teaching-quote-english">"Both the bribe giver and the bribe taker are enemies of the
                     nation."</span>
                 <div class="teaching-context">
-                    <strong>Governance:</strong> Severe punishment for corruption (bribery).
+                    <strong>Justice:</strong> Severe punishment for corruption.
                 </div>
             </article>
 
-            <!-- 4. Self-Reliance -->
-            <article class="teaching-card">
+            <!-- 4. Self-Reliance (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">🧶</div>
                 <div class="teaching-quote-nepali">"विदेशी कपडा नलगाउनु, आफ्नै देशको बुन्नु।"</div>
                 <span class="teaching-quote-english">"Do not wear foreign cloth; weave and wear your own."</span>
                 <div class="teaching-context">
-                    <strong>Economy:</strong> Support local industry and reduce imports.
+                    <strong>Self-Reliance:</strong> Support local industry and reduce imports.
                 </div>
             </article>
 
-            <!-- 5. Export Policy -->
-            <article class="teaching-card">
+            <!-- 5. Export Policy (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">🌿</div>
                 <div class="teaching-quote-nepali">"देशको जडीबुटी भारतमा बेच्नु र नगद ल्याउनु।"</div>
                 <span class="teaching-quote-english">"Export herbs to India and bring back currency."</span>
                 <div class="teaching-context">
-                    <strong>Trade:</strong> Accumulate wealth through the export of natural resources.
+                    <strong>Trade:</strong> Accumulate wealth through the export of resources.
                 </div>
             </article>
 
-            <!-- 6. Wealthy Citizens -->
-            <article class="teaching-card">
+            <!-- 6. Wealthy Citizens (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">💰</div>
                 <div class="teaching-quote-nepali">"प्रजा मोटा भया दरबार बलियो हुन्छ।"</div>
                 <span class="teaching-quote-english">"If the subjects are wealthy, the Palace becomes strong."</span>
                 <div class="teaching-context">
-                    <strong>Prosperity:</strong> A nation's strength lies in the wealth of its people.
+                    <strong>Prosperity:</strong> A nation's strength lies in its people's wealth.
                 </div>
             </article>
 
-            <!-- 7. China Policy -->
-            <article class="teaching-card">
+            <!-- 7. China Policy (Diplomacy) -->
+            <article class="teaching-card" data-category="diplomacy">
+                <div class="card-icon">🤝</div>
                 <div class="teaching-quote-nepali">"उत्तरी बादशाहसित घाहा राख्नु।"</div>
                 <span class="teaching-quote-english">"Maintain peace and friendship with the Emperor of China."</span>
                 <div class="teaching-context">
@@ -128,27 +145,30 @@
                 </div>
             </article>
 
-            <!-- 8. Defense Strategy -->
-            <article class="teaching-card">
+            <!-- 8. Defense Strategy (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🛡️</div>
                 <div class="teaching-quote-nepali">"जाई कटक नगर्नु, झिकी कटक गर्नु।"</div>
                 <span class="teaching-quote-english">"Do not initiate an offensive war, but fight fiercely if
                     attacked."</span>
                 <div class="teaching-context">
-                    <strong>Military:</strong> Defensive war strategy within the hills.
+                    <strong>Strategy:</strong> Defensive war strategy within the hills.
                 </div>
             </article>
 
-            <!-- 9. Palace Thrift -->
-            <article class="teaching-card">
+            <!-- 9. Palace Thrift (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">🏰</div>
                 <div class="teaching-quote-nepali">"राजाले ठुलो महाल बनाउनु हुदैन।"</div>
                 <span class="teaching-quote-english">"The King should not build a grand palace."</span>
                 <div class="teaching-context">
-                    <strong>Governance:</strong> Frugality and simple living for the leadership.
+                    <strong>Frugality:</strong> Simple living for the leadership.
                 </div>
             </article>
 
-            <!-- 10. Judicial Integrity -->
-            <article class="teaching-card">
+            <!-- 10. Judicial Integrity (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">⚖️</div>
                 <div class="teaching-quote-nepali">"निियाँ निसाफ बिगार्न्या भन्याको पक्षपाती हुन्।"</div>
                 <span class="teaching-quote-english">"Those who distort justice are the biased ones."</span>
                 <div class="teaching-context">
@@ -156,8 +176,9 @@
                 </div>
             </article>
 
-            <!-- 11. Identity -->
-            <article class="teaching-card">
+            <!-- 11. Identity (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🚩</div>
                 <div class="teaching-quote-nepali">"नेपाल असल हिन्दुस्तान हो।"</div>
                 <span class="teaching-quote-english">"Nepal is the true Hindustan."</span>
                 <div class="teaching-context">
@@ -165,44 +186,49 @@
                 </div>
             </article>
 
-            <!-- 12. Military Morale -->
-            <article class="teaching-card">
+            <!-- 12. Military Morale (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🎖️</div>
                 <div class="teaching-quote-nepali">"सिपाहीलाई खुसी राख्नु।"</div>
                 <span class="teaching-quote-english">"Keep the soldiers happy."</span>
                 <div class="teaching-context">
-                    <strong>Security:</strong> The army's loyalty is sustained by their well-being.
+                    <strong>Morale:</strong> The army's loyalty is sustained by well-being.
                 </div>
             </article>
 
-            <!-- 13. Meritocracy -->
-            <article class="teaching-card">
+            <!-- 13. Meritocracy (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">👥</div>
                 <div class="teaching-quote-nepali">"थर घर हेरी काम दिनु।"</div>
                 <span class="teaching-quote-english">"Give roles based on suitability and merit."</span>
                 <div class="teaching-context">
-                    <strong>Management:</strong> Placing the right people in the right positions.
+                    <strong>Merit:</strong> Placing the right people in the right positions.
                 </div>
             </article>
 
-            <!-- 14. Border Forts -->
-            <article class="teaching-card">
+            <!-- 14. Border Forts (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🏰</div>
                 <div class="teaching-quote-nepali">"गढी र किल्ला बनाउनु।"</div>
                 <span class="teaching-quote-english">"Build forts and fortifications."</span>
                 <div class="teaching-context">
-                    <strong>Security:</strong> Protect strategic routes and borders.
+                    <strong>Defense:</strong> Protect strategic routes and borders.
                 </div>
             </article>
 
-            <!-- 15. Resource Priority -->
-            <article class="teaching-card">
+            <!-- 15. Resource Priority (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">💎</div>
                 <div class="teaching-quote-nepali">"खानी भयाका ठाउँमा खानी झिक्नु।"</div>
                 <span class="teaching-quote-english">"Operate mines where resources are discovered."</span>
                 <div class="teaching-context">
-                    <strong>Economy:</strong> Nationalizing and extracting mineral wealth.
+                    <strong>Extraction:</strong> Nationalizing and extracting mineral wealth.
                 </div>
             </article>
 
-            <!-- 16. Irrigation Over Housing -->
-            <article class="teaching-card">
+            <!-- 16. Irrigation (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">🌾</div>
                 <div class="teaching-quote-nepali">"कुलो ल्याउन घर सार्नु।"</div>
                 <span class="teaching-quote-english">"Move houses if necessary for building canals."</span>
                 <div class="teaching-context">
@@ -210,17 +236,19 @@
                 </div>
             </article>
 
-            <!-- 17. Beware the South -->
-            <article class="teaching-card">
+            <!-- 17. Beware the South (Diplomacy) -->
+            <article class="teaching-card" data-category="diplomacy">
+                <div class="card-icon">⚓</div>
                 <div class="teaching-quote-nepali">"दक्षिणको समुद्रिको सम्राटसित होसियार हुनु।"</div>
                 <span class="teaching-quote-english">"Be cautious of the Emperor of the South Sea (The British)."</span>
                 <div class="teaching-context">
-                    <strong>Warning:</strong> Identify expansionist threats early.
+                    <strong>Caution:</strong> Identify expansionist threats early.
                 </div>
             </article>
 
-            <!-- 18. Judicial Independence -->
-            <article class="teaching-card">
+            <!-- 18. Judicial Independence (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">🏛️</div>
                 <div class="teaching-quote-nepali">"अदालतको पैसा दरवारमा नलाग्नु।"</div>
                 <span class="teaching-quote-english">"Court fines shouldn't go to the Palace."</span>
                 <div class="teaching-context">
@@ -228,8 +256,9 @@
                 </div>
             </article>
 
-            <!-- 19. Loyal Servants -->
-            <article class="teaching-card">
+            <!-- 19. Loyal Servants (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">🤴</div>
                 <div class="teaching-quote-nepali">"पुस्तौनी काम गर्नेलाई नहटाउनु।"</div>
                 <span class="teaching-quote-english">"Keep loyal and hereditary servants in their roles."</span>
                 <div class="teaching-context">
@@ -237,26 +266,29 @@
                 </div>
             </article>
 
-            <!-- 20. Tactical Hills -->
-            <article class="teaching-card">
+            <!-- 20. Tactical Hills (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">⛰️</div>
                 <div class="teaching-quote-nepali">"पहाडको रक्षाले मात्र थामिन्छ।"</div>
                 <span class="teaching-quote-english">"Only the protection of the hills can sustain us."</span>
                 <div class="teaching-context">
-                    <strong>Strategy:</strong> Geographically leveraging the terrain for defense.
+                    <strong>Terrain:</strong> Geographically leveraging mountains for defense.
                 </div>
             </article>
 
-            <!-- 21. Forgiveness -->
-            <article class="teaching-card">
+            <!-- 21. Forgiveness (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">⚔️</div>
                 <div class="teaching-quote-nepali">"कसुरको सजाय युद्धमा दिनु।"</div>
                 <span class="teaching-quote-english">"Punish the guilty by sending them to war."</span>
                 <div class="teaching-context">
-                    <strong>Justice:</strong> Redemption through service in battle.
+                    <strong>Redemption:</strong> Service in battle as a form of justice.
                 </div>
             </article>
 
-            <!-- 22. Religious Respect -->
-            <article class="teaching-card">
+            <!-- 22. Religious Respect (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🕊️</div>
                 <div class="teaching-quote-nepali">"धर्मका कुरामा कसैलाई दुःख नदिनु।"</div>
                 <span class="teaching-quote-english">"Do not trouble anyone in matters of religion."</span>
                 <div class="teaching-context">
@@ -264,8 +296,9 @@
                 </div>
             </article>
 
-            <!-- 23. Economic Shield -->
-            <article class="teaching-card">
+            <!-- 23. Economic Shield (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">🛑</div>
                 <div class="teaching-quote-nepali">"विदेशी व्यापारीलाई आउन नदिनु।"</div>
                 <span class="teaching-quote-english">"Protect the market from foreign merchants."</span>
                 <div class="teaching-context">
@@ -273,125 +306,139 @@
                 </div>
             </article>
 
-            <!-- 24. Learned Priests -->
-            <article class="teaching-card">
+            <!-- 24. Learned Priests (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">📜</div>
                 <div class="teaching-quote-nepali">"पण्डितलाई न्याय गर्न दिनु।"</div>
                 <span class="teaching-quote-english">"Let the learned ones interpret the law."</span>
                 <div class="teaching-context">
-                    <strong>Legal:</strong> Knowledge of law over personal whims.
+                    <strong>Expertise:</strong> Knowledge of law over personal whims.
                 </div>
             </article>
 
-            <!-- 25. National Pride -->
-            <article class="teaching-card">
+            <!-- 25. National Pride (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🇳🇵</div>
                 <div class="teaching-quote-nepali">"नेपालको सेवा नै ठुलो धर्म हो।"</div>
                 <span class="teaching-quote-english">"Serving Nepal is the greatest duty."</span>
                 <div class="teaching-context">
-                    <strong>Nationalism:</strong> Duty to the state above personal gain.
+                    <strong>Patriotism:</strong> Duty to the state above personal gain.
                 </div>
             </article>
 
-            <!-- 26. Agriculture First -->
-            <article class="teaching-card">
+            <!-- 26. Agriculture (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">🚜</div>
                 <div class="teaching-quote-nepali">"खेतीपातीमा ध्यान दिनु।"</div>
                 <span class="teaching-quote-english">"Pay close attention to agriculture."</span>
                 <div class="teaching-context">
-                    <strong>Economy:</strong> Self-sufficiency in food.
+                    <strong>Food Security:</strong> Self-sufficiency in food production.
                 </div>
             </article>
 
-            <!-- 27. Defensive Terrain -->
-            <article class="teaching-card">
+            <!-- 27. Defensive Terrain (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">💣</div>
                 <div class="teaching-quote-nepali">"चार भञ्ज्याङमा तोपहरु राख्नु।"</div>
                 <span class="teaching-quote-english">"Place cannons at the four mountain passes."</span>
                 <div class="teaching-context">
-                    <strong>Warfare:</strong> Artillery control of entry points.
+                    <strong>Fortification:</strong> Artillery control of entry points.
                 </div>
             </article>
 
-            <!-- 28. Heritage -->
-            <article class="teaching-card">
+            <!-- 28. Heritage (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🕯️</div>
                 <div class="teaching-quote-nepali">"पूर्खाको आर्जेको मुलुक जोगाउनु।"</div>
                 <span class="teaching-quote-english">"Protect the nation founded by ancestors."</span>
                 <div class="teaching-context">
-                    <strong>Responsibility:</strong> Legacy of the founding struggle.
+                    <strong>Legacy:</strong> Honoring the founding struggle.
                 </div>
             </article>
 
-            <!-- 29. Wise Counsel -->
-            <article class="teaching-card">
+            <!-- 29. Wise Counsel (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">👴</div>
                 <div class="teaching-quote-nepali">"बुढा पाकाको सल्लाह लिनु।"</div>
                 <span class="teaching-quote-english">"Consult the elders and wise men."</span>
                 <div class="teaching-context">
-                    <strong>Governance:</strong> Value the experience and wisdom of age.
+                    <strong>Wisdom:</strong> Valuing experience in governance.
                 </div>
             </article>
 
-            <!-- 30. Art and Culture -->
-            <article class="teaching-card">
+            <!-- 30. Art and Culture (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🎭</div>
                 <div class="teaching-quote-nepali">"आफ्नो संस्कृति र नाचगान बचाउनु।"</div>
                 <span class="teaching-quote-english">"Preserve our culture and traditional arts."</span>
                 <div class="teaching-context">
-                    <strong>Identity:</strong> Protecting the cultural soul of the people.
+                    <strong>Culture:</strong> Protecting the soul of the people.
                 </div>
             </article>
 
-            <!-- 31. Unified Command -->
-            <article class="teaching-card">
+            <!-- 31. Unified Command (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">📣</div>
                 <div class="teaching-quote-nepali">"आदेश एउटै हुनुपर्छ।"</div>
                 <span class="teaching-quote-english">"Commands must be unified."</span>
                 <div class="teaching-context">
-                    <strong>Leadership:</strong> Avoiding confusion in wartime orders.
+                    <strong>Leadership:</strong> Single chain of command in war.
                 </div>
             </article>
 
-            <!-- 32. Logistics -->
-            <article class="teaching-card">
+            <!-- 32. Logistics (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🍚</div>
                 <div class="teaching-quote-nepali">"अन्नको भण्डारण गर्नु।"</div>
                 <span class="teaching-quote-english">"Store enough grain for emergencies."</span>
                 <div class="teaching-context">
-                    <strong>Survival:</strong> Preparedness for famine or siege.
+                    <strong>Preparedness:</strong> Ready for famine or siege.
                 </div>
             </article>
 
-            <!-- 33. Local Production -->
-            <article class="teaching-card">
+            <!-- 33. Local Production (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">🛠️</div>
                 <div class="teaching-quote-nepali">"आफुलाई चाहिने हतियार आफै बनाउनु।"</div>
                 <span class="teaching-quote-english">"Manufacture your own weapons."</span>
                 <div class="teaching-context">
-                    <strong>Defense:</strong> Independence from foreign weapon suppliers.
+                    <strong>Independance:</strong> Avoid reliance on foreign arms.
                 </div>
             </article>
 
-            <!-- 34. Forest Protection -->
-            <article class="teaching-card">
+            <!-- 34. Forest Protection (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🌲</div>
                 <div class="teaching-quote-nepali">"बनको रक्षा सिमानामा गर्नु।"</div>
                 <span class="teaching-quote-english">"Protect the forests on the borders."</span>
                 <div class="teaching-context">
-                    <strong>Environment:</strong> Using natural barriers as defensive shields.
+                    <strong>Environment:</strong> Using nature as a defensive wall.
                 </div>
             </article>
 
-            <!-- 35. Balanced Power -->
-            <article class="teaching-card">
+            <!-- 35. Balanced Power (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">⚖️</div>
                 <div class="teaching-quote-nepali">"भारद्दारको शक्ति सन्तुलनमा राख्नु।"</div>
                 <span class="teaching-quote-english">"Maintain a balance of power among courtiers."</span>
                 <div class="teaching-context">
-                    <strong>Politics:</strong> Preventing any single family from becoming too powerful.
+                    <strong>Politics:</strong> Preventing monopoly of power.
                 </div>
             </article>
 
-            <!-- 36. Strategic Trade -->
-            <article class="teaching-card">
+            <!-- 36. Strategic Trade (Economy) -->
+            <article class="teaching-card" data-category="economy">
+                <div class="card-icon">📈</div>
                 <div class="teaching-quote-nepali">"व्यापारमा आफ्नो लाभ हेर्नु।"</div>
                 <span class="teaching-quote-english">"Look for national profit in trade."</span>
                 <div class="teaching-context">
-                    <strong>Economy:</strong> Every trade deal must benefit the state.
+                    <strong>Profit:</strong> Trade must benefit the state.
                 </div>
             </article>
 
-            <!-- 37. Bravery rewarded -->
-            <article class="teaching-card">
+            <!-- 37. Bravery (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🎖️</div>
                 <div class="teaching-quote-nepali">"बहादुरलाई ठुलो मान दिनु।"</div>
                 <span class="teaching-quote-english">"Give great honors to the brave."</span>
                 <div class="teaching-context">
@@ -399,53 +446,59 @@
                 </div>
             </article>
 
-            <!-- 38. Frugal Elite -->
-            <article class="teaching-card">
+            <!-- 38. Frugal Elite (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">🎩</div>
                 <div class="teaching-quote-nepali">"भारद्दारहरु तडक–भडकमा नलाग्नु।"</div>
                 <span class="teaching-quote-english">"Officials should not indulge in show and vanity."</span>
                 <div class="teaching-context">
-                    <strong>Governance:</strong> Avoiding arrogance and excessive spending.
+                    <strong>Humility:</strong> Avoiding arrogance and waste.
                 </div>
             </article>
 
-            <!-- 39. Communication -->
-            <article class="teaching-card">
+            <!-- 39. Communication (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">📨</div>
                 <div class="teaching-quote-nepali">"खबर आदान–प्रदान छिटो गर्नु।"</div>
                 <span class="teaching-quote-english">"Ensure fast and reliable communication."</span>
                 <div class="teaching-context">
-                    <strong>Wartime:</strong> Speed of information determines victory.
+                    <strong>Intel:</strong> Speed of information determines victory.
                 </div>
             </article>
 
-            <!-- 40. Constant Vigilance -->
-            <article class="teaching-card">
+            <!-- 40. Vigilance (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">👁️</div>
                 <div class="teaching-quote-nepali">"सधैं सतर्क हुनु।"</div>
                 <span class="teaching-quote-english">"Be alert at all times."</span>
                 <div class="teaching-context">
-                    <strong>Security:</strong> The price of liberty is eternal vigilance.
+                    <strong>Security:</strong> The price of liberty is vigilance.
                 </div>
             </article>
 
-            <!-- 41. Internal Harmony -->
-            <article class="teaching-card">
+            <!-- 41. Internal Harmony (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🤝</div>
                 <div class="teaching-quote-nepali">"आपसमा झगडा नगर्नु।"</div>
                 <span class="teaching-quote-english">"Do not quarrel amongst yourselves."</span>
                 <div class="teaching-context">
-                    <strong>Unity:</strong> Internal strife is the biggest threat to the nation.
+                    <strong>Solidarity:</strong> Internal strife is the biggest threat.
                 </div>
             </article>
 
-            <!-- 42. Sovereign Law -->
-            <article class="teaching-card">
+            <!-- 42. Sovereign Law (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">📜</div>
                 <div class="teaching-quote-nepali">"ऐन कानुन सबैका लागि बराबर हुनुपर्छ।"</div>
                 <span class="teaching-quote-english">"The law should be equal for everyone."</span>
                 <div class="teaching-context">
-                    <strong>Legal:</strong> Foundation of a stable society.
+                    <strong>Equality:</strong> Foundation of a stable society.
                 </div>
             </article>
 
-            <!-- 43. Humility in Victory -->
-            <article class="teaching-card">
+            <!-- 43. Humility (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">😌</div>
                 <div class="teaching-quote-nepali">"जितमा घमण्ड नगर्नु।"</div>
                 <span class="teaching-quote-english">"Do not be arrogant in victory."</span>
                 <div class="teaching-context">
@@ -453,80 +506,89 @@
                 </div>
             </article>
 
-            <!-- 44. Strategic Retreat -->
-            <article class="teaching-card">
+            <!-- 44. Strategic Retreat (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">⛰️</div>
                 <div class="teaching-quote-nepali">"दुश्मनलाई पहाडमा अल्झाउनु।"</div>
                 <span class="teaching-quote-english">"Lure the enemy into the mountains."</span>
                 <div class="teaching-context">
-                    <strong>Warfare:</strong> Exploiting the terrain's disadvantage for the enemy.
+                    <strong>Tactics:</strong> Exploiting terrain advantages.
                 </div>
             </article>
 
-            <!-- 45. Kathmandu as Heart -->
-            <article class="teaching-card">
+            <!-- 45. Kathmandu (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">🏛️</div>
                 <div class="teaching-quote-nepali">"काठमाडौंलाई शक्तिशाली बनाउनु।"</div>
                 <span class="teaching-quote-english">"Keep the capital strong and central."</span>
                 <div class="teaching-context">
-                    <strong>Politics:</strong> Stability of the center ensures unity.
+                    <strong>Stability:</strong> A strong center ensures unity.
                 </div>
             </article>
 
-            <!-- 46. Citizen Soldiers -->
-            <article class="teaching-card">
+            <!-- 46. Citizen Soldiers (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">⚔️</div>
                 <div class="teaching-quote-nepali">"हरेक नागरिक देशप्रेमी हुनुपर्छ।"</div>
                 <span class="teaching-quote-english">"Every citizen should be a patriot."</span>
                 <div class="teaching-context">
-                    <strong>Loyalty:</strong> Total national commitment.
+                    <strong>Patriotism:</strong> Total national commitment.
                 </div>
             </article>
 
-            <!-- 47. Arms Storage -->
-            <article class="teaching-card">
+            <!-- 47. Arms Storage (Military) -->
+            <article class="teaching-card" data-category="military">
+                <div class="card-icon">🔒</div>
                 <div class="teaching-quote-nepali">"हतियारको भण्डार सुरक्षित राख्नु।"</div>
                 <span class="teaching-quote-english">"Keep weapon armories safe and guarded."</span>
                 <div class="teaching-context">
-                    <strong>Security:</strong> Preventing sabotage of defenses.
+                    <strong>Safety:</strong> Preventing sabotage of defenses.
                 </div>
             </article>
 
-            <!-- 48. Spiritual Strength -->
-            <article class="teaching-card">
+            <!-- 48. Spiritual Strength (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🕉️</div>
                 <div class="teaching-quote-nepali">"पशुपतिनाथको आर्शिवाद लिनु।"</div>
                 <span class="teaching-quote-english">"Maintain the blessings of the divine (Pashupatinath)."</span>
                 <div class="teaching-context">
-                    <strong>Culture:</strong> Spiritual foundation of the kingdom.
+                    <strong>Spirituality:</strong> Spiritual foundation of the kingdom.
                 </div>
             </article>
 
-            <!-- 49. Respect Ancestry -->
-            <article class="teaching-card">
+            <!-- 49. Respect Ancestry (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🕯️</div>
                 <div class="teaching-quote-nepali">"आफ्नो पुर्खाको सम्मान गर्नु।"</div>
                 <span class="teaching-quote-english">"Respect the deeds of your ancestors."</span>
                 <div class="teaching-context">
-                    <strong>Morals:</strong> Learning from the past.
+                    <strong>History:</strong> Learning from the past.
                 </div>
             </article>
 
-            <!-- 50. Non-Alignment -->
-            <article class="teaching-card">
+            <!-- 50. Non-Alignment (Diplomacy) -->
+            <article class="teaching-card" data-category="diplomacy">
+                <div class="card-icon">⚖️</div>
                 <div class="teaching-quote-nepali">"कसैको पक्षमा नलाग्नु।"</div>
                 <span class="teaching-quote-english">"Do not blindly side with anyone."</span>
                 <div class="teaching-context">
-                    <strong>Diplomacy:</strong> Neutrality for the sake of sovereignty.
+                    <strong>Neutrality:</strong> Neutrality ensures sovereignty.
                 </div>
             </article>
 
-            <!-- 51. Universal Dharma -->
-            <article class="teaching-card">
+            <!-- 51. Universal Dharma (Governance) -->
+            <article class="teaching-card" data-category="governance">
+                <div class="card-icon">☸️</div>
                 <div class="teaching-quote-nepali">"धर्म पालना गर्नु।"</div>
                 <span class="teaching-quote-english">"Follow the path of Dharma (Righteousness)."</span>
                 <div class="teaching-context">
-                    <strong>Ethos:</strong> Moral foundation of governance.
+                    <strong>Ethics:</strong> Moral foundation of governance.
                 </div>
             </article>
 
-            <!-- 52. Safe Future -->
-            <article class="teaching-card">
+            <!-- 52. Safe Future (Unity) -->
+            <article class="teaching-card" data-category="unity">
+                <div class="card-icon">🔮</div>
                 <div class="teaching-quote-nepali">"भविष्यको लागि बलियो राष्ट्र छोड्नु।"</div>
                 <span class="teaching-quote-english">"Leave a strong nation for future generations."</span>
                 <div class="teaching-context">
