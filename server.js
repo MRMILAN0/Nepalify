@@ -53,72 +53,51 @@ app.post('/api/transliterate', async (req, res) => {
     }
 });
 
-// Unicode Transliteration Proxy Endpoint (Input Tools & AI)
+// Unicode Transliteration Proxy Endpoint (Strict AI Mode)
 app.post('/api/unicode', async (req, res) => {
-    let { text, mode } = req.body;
+    let { text } = req.body;
 
     if (!text) {
         return res.json({ result: '' });
     }
 
-    // AI Smart Mode
-    if (mode === 'ai' && model) {
-        try {
-            const prompt = `Convert this Romanized Nepali text to Nepali script. Use formal grammar but understand "social media" spellings (e.g., 'xa' -> 'छ', 'xha' -> 'छ', 'ma' -> 'म'). Output ONLY the converted Nepali text. Input: "${text}"`;
-
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const textResponse = response.text().trim();
-
-            return res.json({ result: textResponse });
-        } catch (error) {
-            console.error('Gemini AI Error:', error.message);
-            // Fallback to standard mode if AI fails
-        }
+    if (!model) {
+        return res.status(500).json({ error: 'AI Model not initialized (Check API Key)' });
     }
 
-    // Standard Mode (Google Input Tools) with Custom Pre-processing
     try {
-        // Smart Pre-processing for Custom Dialect/Spellings
-        // User requested: xa, chha, cha, xha -> छ
-        // Google Input Tools maps 'chha' -> 'छ' reliably.
-        // We will normalize the others to 'chha' before sending.
+        // Enhanced System Prompt for "Nepanglish"
+        // We use few-shot prompting to teach the model the specific mapping rules.
+        const systemPrompt = `
+        You are a smart Nepali Transliteration engine. Your goal is to convert Romanized Nepali (Nepanglish) into formal Nepali Unicode.
+        
+        RULES:
+        1. Context is King: Understand the sentence meaning.
+        2. Handle "Social Media" spelling variations smartly.
+        3. Output ONLY the Nepali text. No explanations.
 
-        // Regex to replace specific patterns (case-insensitive)
-        // We use lookaheads/lookbehinds or word boundaries if strictly needed, 
-        // but for broader "generalization", replacing the sequence is often desired.
-        // However, to avoid replacing 'character' -> 'chharacter', we might want to be careful.
-        // Given the examples are short syllables, we'll target them as loose matches for now 
-        // or prioritize the specific user examples.
+        SPECIFIC MAPPINGS (Few-Shot Examples):
+        - Input: "timi k gardai xau" -> Output: "तिमी के गर्दै छौ" (Note: 'xau' -> 'छौ', 'k' -> 'के')
+        - Input: "ma xa" -> Output: "म छ" 
+        - Input: "ramro xa" -> Output: "राम्रो छ" (Note: 'xa' -> 'छ')
+        - Input: "malaai xha" -> Output: "मलाई छ" (Note: 'xha' -> 'छ')
+        - Input: "khana khayau?" -> Output: "खाना खायौ?"
+        - Input: "mero nam milan ho" -> Output: "मेरो नाम मिलन हो"
+        - Input: "tapai ko ghar kaha ho" -> Output: "तपाईंको घर कहाँ हो"
+        - Input: "cha" -> Output: "छ" (As per user preference)
 
-        // Strategy: Replace 'xa', 'xha' with 'chha'. 
-        // 'cha' mapping to 'chha' is aggressive (usually 'cha' -> 'च'), 
-        // but sticking to user request: "cha -> छ".
+        INPUT TO CONVERT: "${text}"
+        `;
 
-        const replacements = [
-            { pattern: /xha/gi, replacement: 'chha' },
-            { pattern: /xa/gi, replacement: 'chha' },
-            { pattern: /cha/gi, replacement: 'chha' } // User explicitly asked for this mapping to 'छ'
-        ];
+        const result = await model.generateContent(systemPrompt);
+        const response = await result.response;
+        const textResponse = response.text().trim();
 
-        replacements.forEach(({ pattern, replacement }) => {
-            text = text.replace(pattern, replacement);
-        });
+        return res.json({ result: textResponse });
 
-        const inputToolsUrl = `https://inputtools.google.com/request?text=${encodeURIComponent(text)}&itc=ne-t-i0-und&num=1&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`;
-
-        const response = await apiClient.get(inputToolsUrl);
-
-        // Response format: ["SUCCESS", [["namaste", ["नमस्ते", "नमस्ते!", ...], ...]]]
-        if (response.data && response.data[1] && response.data[1][0] && response.data[1][0][1]) {
-            const result = response.data[1][0][1][0]; // First suggestion
-            return res.json({ result });
-        } else {
-            return res.status(500).json({ error: 'Failed to fetch from Google Input Tools' });
-        }
     } catch (error) {
-        console.error('Unicode Proxy Error:', error.message);
-        return res.status(500).json({ error: 'Server Error', details: error.message });
+        console.error('Gemini AI Error:', error.message);
+        return res.status(500).json({ error: 'AI Generation Failed', details: error.message });
     }
 });
 

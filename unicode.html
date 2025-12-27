@@ -51,15 +51,16 @@
             <div class="input-block">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                     <label for="unicodeInput" style="margin-bottom: 0;">Unicode</label>
-                    <div class="toggle-container" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 0.9rem; color: var(--text-secondary);">Smart AI</span>
-                        <label class="switch">
-                            <input type="checkbox" id="aiModeToggle">
-                            <span class="slider round"></span>
-                        </label>
+                    <div class="badge-container"
+                        style="display: flex; align-items: center; gap: 0.5rem; background: rgba(var(--primary-rgb), 0.1); padding: 4px 8px; border-radius: 8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#8B5CF6" />
+                        </svg>
+                        <span style="font-size: 0.8rem; color: var(--primary-color); font-weight: 600;">Powered by
+                            Gemini AI</span>
                     </div>
                 </div>
-                <textarea id="unicodeInput" placeholder="Type Romanized Nepali (e.g. mero nam...)"
+                <textarea id="unicodeInput" placeholder="Type Romanized Nepali (e.g. timi k gardai xau...)"
                     spellcheck="false"></textarea>
             </div>
 
